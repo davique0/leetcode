@@ -27,16 +27,34 @@ Constraints:
 
 */
 
+// const maxProfit = (prices) => {
+//   let totalSum = 0;
+
+//   for (let i = 0; i < prices.length; i++) {
+//     for (let j = i + 1; j <= prices.length; j++) {
+//       if (prices[j] - prices[i] > totalSum) {
+//         totalSum = prices[j] - prices[i];
+//       }
+//     }
+//   }
+
+//   return totalSum;
+// };
+
 const maxProfit = (prices) => {
-  let totalSum = 0;
+  let minPrice = Infinity;
+  let maxProfit = 0;
 
   for (let i = 0; i < prices.length; i++) {
-    for (let j = i + 1; j <= prices.length; j++) {
-      if (prices[j] - prices[i] > totalSum) {
-        totalSum = prices[j] - prices[i];
-      }
+    if (prices[i] < minPrice) {
+      minPrice = prices[i];
+    } else if (prices[i] - minPrice > maxProfit) {
+      maxProfit = prices[i] - minPrice;
     }
   }
 
-  return totalSum;
+  return maxProfit;
 };
+
+console.log(maxProfit([2, 1, 2, 0, 1]));
+console.log(maxProfit([2, 4, 1]));
