@@ -29,13 +29,26 @@ Constraints:
 s consists only of printable ASCII characters.
 */
 
-var isPalindrome = function (s) {
-  const alphanumeric = /[A-Za-z1-9]/g;
-  const cleanStr = s.match(alphanumeric).join("").toLowerCase().split("");
-  console.log(cleanStr[5]);
+// var isPalindrome = function (s) {
+//   const alphanumeric = /[A-Za-z1-9]/g;
+//   const cleanStr = s.match(alphanumeric).join("").toLowerCase().split("");
+//   console.log(cleanStr[5]);
 
-  if (cleanStr.join("") === cleanStr.reverse().join("")) return true;
-  return false;
+//   if (cleanStr.join("") === cleanStr.reverse().join("")) return true;
+//   return false;
+// };
+
+var isPalindrome = function (s) {
+  const alphanumeric = /[A-Za-z0-9]/g;
+  const cleanStr = s.match(alphanumeric);
+
+  if (cleanStr) {
+    return (
+      cleanStr.join("").toLowerCase() ===
+      cleanStr.reverse().join("").toLowerCase()
+    );
+  }
+  return true;
 };
 
 console.log(isPalindrome("A man, a plan, a canal: panama"));
